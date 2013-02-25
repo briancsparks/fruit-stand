@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe "Apple" do
 
   describe "#initialize" do
@@ -36,20 +35,24 @@ describe "Apple" do
     context "when given a number of slices parameter" do
       it "returns the correct number of slices" do
         # TODO: Write this test
+        pending
       end
-
+      
       it "reports the correct number of remaining slices" do
         # TODO: Write this test
+        pending
       end
     end
 
     context "when given a number of slices parameter greater than the remaining slices" do
       it "returns the number of remaining slices" do
         # TODO: Write this test
+        pending
       end
 
       it "returns the correct number of remaining slices" do
         # TODO: Write this test
+        pending
       end
     end
   end
