@@ -13,6 +13,8 @@ module Fruit
         hash[:apple] = lambda { sleep 8; rand(5..9) }
         hash
       end
+
+      @growth_range[type]
     end
   end
 end
