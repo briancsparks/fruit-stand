@@ -34,25 +34,21 @@ describe "Apple" do
 
     context "when given a number of slices parameter" do
       it "returns the correct number of slices" do
-        # TODO: Write this test
-        pending
+        pending "Write this test"
       end
       
       it "reports the correct number of remaining slices" do
-        # TODO: Write this test
-        pending
+        pending "Write this test"
       end
     end
 
     context "when given a number of slices parameter greater than the remaining slices" do
-      it "returns the number of remaining slices" do
-        # TODO: Write this test
-        pending
+      it "returns the all of the remaining slices" do
+        pending "Write this test"
       end
 
       it "returns the correct number of remaining slices" do
-        # TODO: Write this test
-        pending
+        pending "Write this test"
       end
     end
   end
