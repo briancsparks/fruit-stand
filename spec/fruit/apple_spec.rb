@@ -34,21 +34,27 @@ describe "Apple" do
 
     context "when given a number of slices parameter" do
       it "returns the correct number of slices" do
-        pending "Write this test"
+        apple = Fruit::Apple.new
+        expect(apple.slice 2).to eq 2
       end
       
       it "reports the correct number of remaining slices" do
-        pending "Write this test"
+        apple = Fruit::Apple.new
+        apple.slice 2
+        expect(apple.remaining_slices).to eq 6
       end
     end
 
     context "when given a number of slices parameter greater than the remaining slices" do
       it "returns the all of the remaining slices" do
-        pending "Write this test"
+        apple = Fruit::Apple.new
+        expect(apple.slice 10).to eq 8
       end
 
       it "returns the correct number of remaining slices" do
-        pending "Write this test"
+        apple = Fruit::Apple.new
+        apple.slice 10
+        expect(apple.remaining_slices).to eq 0
       end
     end
   end
