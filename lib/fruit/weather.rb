@@ -10,7 +10,7 @@ module Fruit
       @growth_range ||= begin
         hash = Hash.new
         hash.default = lambda { sleep 12; 0 }
-        hash[:apple] = lambda { sleep 8; rand(5..9) }
+        hash[:apple] = lambda { sleep 1; rand(5..9) }
         hash
       end
 

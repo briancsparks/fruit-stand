@@ -6,15 +6,18 @@ module Fruit
     def initialize(variety = "Granny Smith")
       @variety = variety
       @birthday = Time.now
-      @slices = Array.new(8)
+    end
+
+    def slices
+      @slices ||= Array.new(size)
     end
 
     def slice(count=1)
-      @slices.pop(count).length
+      slices.pop(count).length
     end
 
     def remaining_slices
-      @slices.length
+      slices.length
     end
 
     def ripe?
@@ -31,6 +34,11 @@ module Fruit
 
     def self.age_when_ripe
       10
+    end
+
+    def size
+      #puts "Sizing"
+      @size ||= Weather.report(:apple)
     end
 
   end

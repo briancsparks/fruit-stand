@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe Fruit::Apple do
 
+  describe '#size' do
+    it "is created with a size from the weather service" do
+      Fruit::Weather.should_receive(:report).with(:apple).and_return(8)
+      expect(subject.size).to be 8
+    end
+  end
+
   describe '#ripe?' do
 
     context "at first (initially)" do
@@ -70,14 +77,21 @@ describe Fruit::Apple do
   end
 
   describe "#slice" do
+
+    let(:subject) do
+      apple = Fruit::Apple.new
+      apple.stub(:size).and_return(7)
+      apple
+    end
+
     context "when given no parameters" do
       it "returns removes one slice of the apple" do
         expect(subject.slice).to eq 1
       end
 
       it "reports the correct number of remaining slices" do
-        subject.slice
-        expect(subject.remaining_slices).to eq 7
+        slices_recd = subject.slice
+        expect(subject.remaining_slices).to eq subject.size - 1
       end
     end
 
@@ -87,18 +101,18 @@ describe Fruit::Apple do
       end
       
       it "reports the correct number of remaining slices" do
-        subject.slice 2
-        expect(subject.remaining_slices).to eq 6
+        slices_recd = subject.slice 2
+        expect(subject.remaining_slices).to eq subject.size - 2
       end
     end
 
     context "when given a number of slices parameter greater than the remaining slices" do
       it "returns the all of the remaining slices" do
-        expect(subject.slice 10).to eq 8
+        expect(subject.slice 10).to eq subject.size
       end
 
       it "returns the correct number of remaining slices" do
-        subject.slice 10
+        slices_recd = subject.slice 10
         expect(subject.remaining_slices).to eq 0
       end
     end
