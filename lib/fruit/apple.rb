@@ -5,17 +5,11 @@ module Fruit
 
     def initialize(variety = "Granny Smith")
       @variety = variety
-      @slices = 'a' * 8
+      @slices = Array.new(8)
     end
 
     def slice(count=1)
-      slices_to_give = count
-      if slices_to_give > @slices.length
-        slices_to_give = @slices.length
-      end
-
-      @slices = 'a' * (@slices.length - slices_to_give)
-      slices_to_give
+      @slices.pop(count).length
     end
 
     def remaining_slices
