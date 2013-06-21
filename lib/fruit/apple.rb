@@ -5,6 +5,7 @@ module Fruit
 
     def initialize(variety = "Granny Smith")
       @variety = variety
+      @birthday = Time.now
       @slices = Array.new(8)
     end
 
@@ -14,6 +15,18 @@ module Fruit
 
     def remaining_slices
       @slices.length
+    end
+
+    def ripe?
+      age > self.class.age_when_ripe
+    end
+
+    def age
+      Time.now - @birthday
+    end
+
+    def self.age_when_ripe
+      10
     end
 
   end

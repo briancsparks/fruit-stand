@@ -2,6 +2,34 @@ require 'spec_helper'
 
 describe Fruit::Apple do
 
+  describe '#ripe?' do
+
+    context "at first (initially)" do
+      it "is false" do
+        expect(subject.ripe?).to be_false
+      end
+    end
+
+    context "when less than 10 seconds old" do
+      it "is not ripe" do
+        expect(subject.ripe?).to be_false
+        sleep Fruit::Apple.age_when_ripe - 0.01
+        expect(subject.ripe?).to be_false
+        expect(subject).not_to be_ripe
+      end
+    end
+
+    context "when more than 10 seconds old" do
+      it "is ripe" do
+        expect(subject.ripe?).to be_false
+        sleep Fruit::Apple.age_when_ripe + 0.01
+        expect(subject.ripe?).to be_true
+        expect(subject).to be_ripe
+      end
+    end
+
+  end
+
   describe "#initialize" do
     context "when given no parameters" do
       it "variety is 'Granny Smith'" do
