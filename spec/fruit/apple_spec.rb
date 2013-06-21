@@ -28,6 +28,32 @@ describe Fruit::Apple do
 
   end
 
+  describe '#unripe?' do
+
+    context "at first (initially)" do
+      it "is true" do
+        expect(subject.unripe?).to be_true
+      end
+    end
+
+    context "when less than 10 seconds old" do
+      it "is not unripe" do
+        subject.stub(:age).and_return(9)
+        expect(subject.unripe?).to be_true
+        expect(subject).to be_unripe
+      end
+    end
+
+    context "when more than 10 seconds old" do
+      it "is unripe" do
+        subject.stub(:age).and_return(11)
+        expect(subject.unripe?).to be_false
+        expect(subject).not_to be_unripe
+      end
+    end
+
+  end
+
   describe "#initialize" do
     context "when given no parameters" do
       it "variety is 'Granny Smith'" do
