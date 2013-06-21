@@ -12,7 +12,6 @@ describe Fruit::Apple do
 
     context "when less than 10 seconds old" do
       it "is not ripe" do
-        expect(subject.ripe?).to be_false
         subject.stub(:age).and_return(9)
         expect(subject.ripe?).to be_false
         expect(subject).not_to be_ripe
@@ -21,7 +20,6 @@ describe Fruit::Apple do
 
     context "when more than 10 seconds old" do
       it "is ripe" do
-        expect(subject.ripe?).to be_false
         subject.stub(:age).and_return(11)
         expect(subject.ripe?).to be_true
         expect(subject).to be_ripe
